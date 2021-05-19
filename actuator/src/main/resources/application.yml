@@ -1,0 +1,27 @@
+info:
+  app:   # specify the app information
+    name: "spring boot actuator"
+    version: 1.0.0
+    description: "This is an application to show the detail of actuators"
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true  #open the endpoint which can showdown application remotely
+    beans:
+      cache:
+        time-to-live: "5s"   #endpoint automatically cache response that do not take any parameters
+    health:
+      show-details: always  # provide more detail about health endpoint
+  endpoints:
+    web:
+      exposure:
+        include: "*"   #include all endpoints of web expect env, beans
+      base-path: "/manage"
+
+spring:
+  security: # specify who can see the endpoint information
+    user:
+      name: admin
+      password: admin
+      roles: ENDPOINT_ADMIN
