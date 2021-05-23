@@ -1,4 +1,4 @@
-package com.github.faris.springboot.jpa.actuator.config;
+package com.github.faris.springboot.actuator.config;
 
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;

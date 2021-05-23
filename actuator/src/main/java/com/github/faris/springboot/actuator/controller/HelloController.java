@@ -1,4 +1,4 @@
-package com.github.faris.springboot.jpa.actuator.controller;
+package com.github.faris.springboot.actuator.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

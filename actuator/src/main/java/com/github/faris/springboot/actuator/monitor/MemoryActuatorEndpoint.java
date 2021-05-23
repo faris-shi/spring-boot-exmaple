@@ -1,4 +1,4 @@
-package com.github.faris.springboot.jpa.actuator.monitor;
+package com.github.faris.springboot.actuator.monitor;
 
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;

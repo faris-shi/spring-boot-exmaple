@@ -7,45 +7,47 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Entity
-@Table(
-        name = "tbl_user",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "tbl_user_username_uk", columnNames = "username")
-        }
-)
+@Table(name = "tbl_user")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class User implements Serializable {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
-    @Column(name = "username", unique = true, nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "roles")
-    private String roles;
+    @Column(name = "role_ids")
+    private String roleIds;
 
     @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    public List<String> roles() {
-        if (!StringUtils.hasText(this.roles)) {
+    public User(String username, String password, String roleIds) {
+        this.username = username;
+        this.password = password;
+        this.roleIds = roleIds;
+    }
+
+    public List<Long> getRoleIdArrays() {
+        if (!StringUtils.hasText(roleIds)) {
             return Collections.emptyList();
         }
-        return new ArrayList<>(List.of(roles.split(",")));
+        return Arrays.stream(roleIds.split(",")).map(Long::valueOf).collect(toList());
     }
 }

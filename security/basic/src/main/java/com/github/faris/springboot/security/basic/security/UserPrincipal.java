@@ -12,14 +12,11 @@ public class UserPrincipal implements UserDetails {
 
     private final String password;
 
-    private final boolean isActive;
-
     private final List<GrantedAuthority> authorities;
 
-    public UserPrincipal(String username, String password, boolean isActive, List<GrantedAuthority> authorities) {
+    public UserPrincipal(String username, String password, List<GrantedAuthority> authorities) {
         this.username = username;
         this.password = password;
-        this.isActive = isActive;
         this.authorities = authorities;
     }
 
@@ -55,6 +52,6 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isActive;
+        return true;
     }
 }
