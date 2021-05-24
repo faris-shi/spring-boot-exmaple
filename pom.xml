@@ -10,7 +10,6 @@
     <modules>
         <module>actuator</module>
         <module>security</module>
-        <module>security</module>
     </modules>
     <packaging>pom</packaging>
 

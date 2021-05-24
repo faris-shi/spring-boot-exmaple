@@ -13,6 +13,7 @@
 
     <modules>
         <module>basic</module>
+        <module>form</module>
     </modules>
 
     <properties>
